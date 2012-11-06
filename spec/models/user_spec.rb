@@ -17,6 +17,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:picposts) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -124,6 +125,29 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "picpost associations" do
+    before { @user.save }
+    let!(:older_picpost) do
+      FactoryGirl.create(:picpost, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_picpost) do
+      FactoryGirl.create(:picpost, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right picposts in the right order" do
+      @user.picposts.should == [newer_picpost, older_picpost]
+    end
+
+    it "should destroy associated picposts" do
+      picposts = @user.picposts.dup
+      @user.destroy
+      picposts.should_not be_empty
+      picposts.each do |picpost|
+        Picpost.find_by_id(picpost.id).should be_nil
+      end
+    end
   end
 
 end

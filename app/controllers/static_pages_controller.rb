@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @picposts = Picpost.all
   end
 
   def help
