@@ -1,15 +1,21 @@
 <div class="row">
-<div class="span12">
+  <div class="span12">
+    <%= image_tag('runway.png', alt: "The Runway") %>
+  </div>
+</div>
+
+<div class="row">
+<div class="span12" >
   <% @picposts.each_slice(4) do |picpost_four| %>
-    <div class="row" style="padding-bottom: 5px">
+    <div class="row picture_row">
     <% picpost_four.each do |picpost| %>
         <div class="span3">
      
-          <div class="pic" style="border: 1px solid black; padding: 5px; background-color: #eee;">
-            <div class="picture_content" style="margin-left: 20px;">
+          <div class="pic shadow round">
+            <div class="picture_content">
               <i class="icon-user"></i> <%= picpost.user.name %>
               <%= image_tag(picpost.picture_url) %>
-              <p><%= picpost.caption %></p> 
+              <p><caption style="margin-top: 5px;"><%= picpost.caption %></caption></p>
             </div>
           </div>
         </div>

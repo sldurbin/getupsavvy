@@ -5,6 +5,7 @@ html {
 }
 
 body {
+  background-color: rgb(248,246,210);
   padding-top: 60px;
 }
 
@@ -182,4 +183,29 @@ input, textarea, select, .uneditable-input {
       border-bottom: 1px solid $grayLighter;
     }
   }
+}
+
+.pic {
+  border: 1px solid #F5CED0;
+  padding: 5px;
+  background-color: #ffffff;
+}
+
+.picture_content {
+  margin-left: 20px;
+}
+
+.picture_row {
+  margin-bottom: 10px;
+}
+
+.shadow {
+  -webkit-box-shadow: 5px 5px 2.5px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    5px 5px 2.5px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         5px 5px 2.5px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+.round {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
 }
