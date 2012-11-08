@@ -1,0 +1,36 @@
+  <% if !signed_in? %>
+      <span class="rating_icon_container"><i class="icon-thumbs-up"></i>Dashing ( <%= picpost.get_likes %> )</span>
+      <span class="rating_icon_container"><i class="icon-thumbs-down"></i>Clashing ( <%= picpost.get_dislikes %> )</span>
+  <% else %>
+    <% rating = current_user.rating(picpost) %>
+
+    <% if rating == true %>
+      <span class="rating_icon_container_disabled"><i class="icon-thumbs-up"></i>Dashing ( <%= picpost.get_likes %> )</span>
+      <span class="rating_icon_container_disabled"><i class="icon-thumbs-down"></i>Clashing ( <%= picpost.get_dislikes %> )</span>
+    <% elsif rating == false %>
+      <span class="rating_icon_container_disabled"><i class="icon-thumbs-up"></i>Dashing ( <%= picpost.get_likes %> )</span>
+      <span class="rating_icon_container_disabled"><i class="icon-thumbs-down"></i>Clashing ( <%= picpost.get_dislikes %> )</span>
+    <% elsif rating == nil %>
+
+<!--- CONTINUE HERE!!!!  -->
+<%= form_for(current_user.picture_ratings.build(picpost_id: picpost.id),
+             remote: true) do |f| %>
+
+  <%= f.hidden_field :rating, :value => true %>
+  <%= f.hidden_field :picpost_id, :value => picpost.id %>
+      <span class="rating_icon_container" onclick="$('#new_picture_rating').submit();"><i class="icon-thumbs-up"></i>Dashing ( <%= picpost.get_likes %> )</span>
+<!--- END FORM -->
+
+<% end %>
+      <span class="rating_icon_container"><i class="icon-thumbs-down"></i>Clashing ( <%= picpost.get_dislikes %> )</span>
+    <% end %>
+    <span class="rating_icon_container"><i class="icon-comment"></i></span>
+
+    <% if rating == true %>
+      <div class="undo"><span class="undo_icon_container">Undo <i class="icon-thumbs-up"></i></span></div>
+    <% elsif rating == false %>
+      <div class="undo"><span class="undo_icon_container">Undo <i class="icon-thumbs-down"></i></span></div>
+    <% end %>
+
+  <% end %>
+

@@ -15,9 +15,12 @@
      
           <div class="pic shadow round">
             <div class="picture_content">
-              <i class="icon-user"></i> <%= picpost.user.name %>
+              <div class="user_container"><i class="icon-user"></i> <%= picpost.user.name %></div>
               <%= image_tag(picpost.picture_url) %>
-              <p><caption style="margin-top: 5px;"><%= picpost.caption %></caption></p>
+              <p class="caption" style="width: 150px; padding-bottom: 5px; padding-top: 5px; border-bottom: 1px solid #F5CED0;"><%= picpost.caption %></p>
+            </div>
+            <div class="rating_panel">
+                <%= render 'rating_form', picpost: picpost %>
             </div>
           </div>
         </div>

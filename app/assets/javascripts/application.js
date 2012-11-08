@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+/* HOME JS */
+$(document).ready(function() {
+  $("div.pic").css({
+    'font-size': 'x-small'
+  });
+  $("p.caption").css({
+    'font-size': 'x-small'
+  });
+});

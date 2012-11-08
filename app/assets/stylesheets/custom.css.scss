@@ -1,11 +1,13 @@
 @import "bootstrap";
 
+
 html {
   overflow-y: scroll;
 }
 
 body {
-  background-color: rgb(248,246,210);
+  //background-color: rgb(248,246,210);
+  background-color: #EDE8E4;
   padding-top: 60px;
 }
 
@@ -72,12 +74,14 @@ p {
   text-decoration: none;
 }
 
+
 /* footer */
 
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
+  /*border-top: 1px solid #eaeaea;*/
+  border-top: 1px solid #F5CED0;
   color: #999;
 }
 
@@ -209,3 +213,37 @@ input, textarea, select, .uneditable-input {
   border-radius: 5px;
   -moz-border-radius: 5px;
 }
+
+span.rating_icon_container {
+  opacity: 0.8;
+  margin-left: 10px;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: 1;
+  }
+}
+
+span.rating_icon_container_disabled {
+  opacity: 0.5;
+  margin-left: 10px;
+  text-decoration: italic;
+}
+
+span.undo_icon_container {
+  opacity: 0.8;
+  font-size: xx-small;
+  margin-left: 20px;
+  padding-top: 5px;
+  border-top: 1px solid #F5CED0;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: 1;
+  }
+}
+
+div.undo {
+  padding-top: 10px;
+}
+

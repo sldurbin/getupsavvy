@@ -14,5 +14,11 @@ FactoryGirl.define do
     caption "Lorem ipsum"
     user
   end
+
+  factory :picture_rating do
+    comment "Lorem ipsum"
+    rating true
+    picpost
+  end
  
 end

@@ -1,7 +1,12 @@
 Matcher::Application.routes.draw do
+  get "picture_ratings/new"
+
+  get "picture_reviews/new"
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :picposts
+  resources :picture_ratings
 
   root to: 'static_pages#home'
 
