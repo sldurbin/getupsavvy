@@ -1,36 +1,54 @@
-  <% if !signed_in? %>
+<% if !signed_in? %>
+  <div style="padding-bottom: 8px;">
+    <div style="float: left;">
       <span class="rating_icon_container"><i class="icon-thumbs-up"></i>Dashing ( <%= picpost.get_likes %> )</span>
+    </div>
+    <div style="float: left;">
       <span class="rating_icon_container"><i class="icon-thumbs-down"></i>Clashing ( <%= picpost.get_dislikes %> )</span>
-  <% else %>
+    </div>
+
+    <div>
+      <span class="rating_icon_container"><i class="icon-comment"></i></span>
+    </div>
+
+  </div>
+<% else %>
+
+  <div style="padding-bottom: 8px;">
+
     <% rating = current_user.rating(picpost) %>
+    <% (rating == nil) ? submit_form = "$(this).submit();" : submit_form = "" %>
+    <% (rating == nil) ? html_class = "rating_icon_container" : html_class = "rating_icon_container_disabled" %>
 
-    <% if rating == true %>
-      <span class="rating_icon_container_disabled"><i class="icon-thumbs-up"></i>Dashing ( <%= picpost.get_likes %> )</span>
-      <span class="rating_icon_container_disabled"><i class="icon-thumbs-down"></i>Clashing ( <%= picpost.get_dislikes %> )</span>
-    <% elsif rating == false %>
-      <span class="rating_icon_container_disabled"><i class="icon-thumbs-up"></i>Dashing ( <%= picpost.get_likes %> )</span>
-      <span class="rating_icon_container_disabled"><i class="icon-thumbs-down"></i>Clashing ( <%= picpost.get_dislikes %> )</span>
-    <% elsif rating == nil %>
+    <div style="float: left;">
+      <%= form_for(current_user.picture_ratings.build(picpost_id: picpost.id), remote: true) do |f| %>
+      
+        <%= f.hidden_field :rating, :value => true %>
+        <%= f.hidden_field :picpost_id, :value => picpost.id %>
+        <span class="<%= html_class %>" onclick="<%= submit_form %>"><i class="icon-thumbs-up"></i>Dashing ( <%= picpost.get_likes %> )</span>
+      <% end %>
 
-<!--- CONTINUE HERE!!!!  -->
-<%= form_for(current_user.picture_ratings.build(picpost_id: picpost.id),
-             remote: true) do |f| %>
+    </div>
 
-  <%= f.hidden_field :rating, :value => true %>
-  <%= f.hidden_field :picpost_id, :value => picpost.id %>
-      <span class="rating_icon_container" onclick="$('#new_picture_rating').submit();"><i class="icon-thumbs-up"></i>Dashing ( <%= picpost.get_likes %> )</span>
-<!--- END FORM -->
+    <div style="float: left;">
+      <%= form_for(current_user.picture_ratings.build(picpost_id: picpost.id), remote: true) do |f| %>
+  
+        <%= f.hidden_field :rating, :value => false %>
+        <%= f.hidden_field :picpost_id, :value => picpost.id %>
+        <span class="<%= html_class %>" onclick="<%= submit_form %>"><i class="icon-thumbs-down"></i>Clashing ( <%= picpost.get_dislikes %> )</span>
+      <% end %>
+    </div>
 
-<% end %>
-      <span class="rating_icon_container"><i class="icon-thumbs-down"></i>Clashing ( <%= picpost.get_dislikes %> )</span>
-    <% end %>
-    <span class="rating_icon_container"><i class="icon-comment"></i></span>
+    <div>
+      <span class="rating_icon_container"><i class="icon-comment"></i></span>
+    </div>
+  </div>
 
-    <% if rating == true %>
-      <div class="undo"><span class="undo_icon_container">Undo <i class="icon-thumbs-up"></i></span></div>
-    <% elsif rating == false %>
-      <div class="undo"><span class="undo_icon_container">Undo <i class="icon-thumbs-down"></i></span></div>
-    <% end %>
-
+  <% if rating != nil %>
+    <% (rating == true) ? icon = "icon-thumbs-up" : icon = "icon-thumbs-down" %>
+    <%= form_for(current_user.picture_ratings.find_by_picpost_id(picpost.id), html: { method: :delete }, remote: true) do |f| %>
+      <div class="undo"><span class="undo_icon_container" onclick="$(this).submit();">Undo <i class="<%= icon %>"></i></span></div>
+    <% end %> 
   <% end %>
 
+<% end %>

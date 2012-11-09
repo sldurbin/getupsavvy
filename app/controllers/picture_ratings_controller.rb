@@ -14,6 +14,15 @@ class PictureRatingsController < ApplicationController
     end
   end
 
+  def destroy
+    @picpost = PictureRating.find(params[:id]).picpost
+    current_user.unrate!(@picpost)
+    respond_to do |format|
+      format.html { redirect_to '/static_pages/home' }
+      format.js
+    end
+  end
+
   def show
   end
 

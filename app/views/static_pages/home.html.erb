@@ -19,7 +19,7 @@
               <%= image_tag(picpost.picture_url) %>
               <p class="caption" style="width: 150px; padding-bottom: 5px; padding-top: 5px; border-bottom: 1px solid #F5CED0;"><%= picpost.caption %></p>
             </div>
-            <div class="rating_panel">
+            <div id=<%= "rating_#{picpost.id}" %> class="rating_panel">
                 <%= render 'rating_form', picpost: picpost %>
             </div>
           </div>

@@ -3,6 +3,7 @@ class Picpost < ActiveRecord::Base
   attr_accessible :caption, :picture, :picture_cache
   belongs_to :user
   has_many :picture_ratings, dependent: :destroy
+  has_many :picture_comments, dependent: :destroy
 
   validates :user_id, presence: true
   validates :caption, length: { maximum: 100 }

@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :picposts, dependent: :destroy
   has_many :picture_ratings, dependent: :destroy
+  has_many :picture_comments, dependent: :destroy
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
@@ -32,6 +33,10 @@ class User < ActiveRecord::Base
 
   def rate!(picpost, rating)
     picture_ratings.create!(picpost_id: picpost.id, rating: rating)    
+  end
+ 
+  def unrate!(picpost)
+    picture_ratings.find_by_picpost_id(picpost.id).destroy
   end
 
   private

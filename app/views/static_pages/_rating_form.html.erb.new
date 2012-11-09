@@ -1,0 +1,29 @@
+<div style="padding-bottom: 20px;">
+  <div style="float: left;">
+    <% var = "$('#new_picture_rating').submit();" %>
+    <h1><%= picpost.id %></h1>
+    <%= form_for(current_user.picture_ratings.build(picpost_id: picpost.id), remote: true) do |f| %>
+      <%= f.hidden_field :rating, :value => true %>
+      <%= f.hidden_field :picpost_id, :value => picpost.id %>
+      <span class="rating_icon_container" onclick="<%= var %>"><i class="icon-thumbs-up"></i>Dashing ( <%= picpost.get_likes %> )</span>
+    <% end %>
+
+  </div>
+
+  <div style="float: left;">
+    <span class="rating_icon_container"><i class="icon-thumbs-down"></i>Clashing ( <%= picpost.get_dislikes %> )</span>
+  </div>
+
+  <div style="float: left;">
+    <span class="rating_icon_container"><i class="icon-comment"></i></span>
+  </div>
+</div>
+
+<% rating = true %>
+<% if rating == true %>
+  <div class="undo"><span class="undo_icon_container">Undo <i class="icon-thumbs-up"></i></span></div>
+<% elsif rating == false %>
+  <div class="undo"><span class="undo_icon_container">Undo <i class="icon-thumbs-down"></i></span></div>
+<% end %> 
+
+
