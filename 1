@@ -1,0 +1,7 @@
+$("#example2").popover({
+  placement: 'top',
+  html: 'true',
+  content: <%= escape_javascript render(partial: 'static_pages/comment_form') %>
+}).popover('toggle');
+
+/*$("#popover_container").popover("<%= escape_javascript render(partial: 'static_pages/comment_form')%>");*/

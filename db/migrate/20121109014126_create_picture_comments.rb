@@ -7,7 +7,7 @@ class CreatePictureComments < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :picture_comments, :picpost_id
     add_index :picture_comments, :user_id
+    add_index :picture_comments, [:picpost_id, :created_at]
   end
 end

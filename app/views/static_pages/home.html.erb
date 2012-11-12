@@ -6,8 +6,11 @@
   </div>
 </div>
 
+<%= render 'modal' %>
+
 <div class="row">
 <div class="span12" >
+  
   <% @picposts.each_slice(4) do |picpost_four| %>
     <div class="row picture_row">
     <% picpost_four.each do |picpost| %>

@@ -1,0 +1,5 @@
+$("div#comment_list_<%=@picpost.id %>").html("<%= escape_javascript(render('static_pages/comment_form', picpost: @picpost)) %>");
+$("#comments_container").css({
+  'top': $(element_id).position().top - $("#comments_container").height() - 15,
+});
+

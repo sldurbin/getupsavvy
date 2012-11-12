@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20121109014126) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "picture_comments", ["picpost_id"], :name => "index_picture_comments_on_picpost_id"
+  add_index "picture_comments", ["picpost_id", "created_at"], :name => "index_picture_comments_on_picpost_id_and_created_at"
   add_index "picture_comments", ["user_id"], :name => "index_picture_comments_on_user_id"
 
   create_table "picture_ratings", :force => true do |t|
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20121109014126) do
   end
 
   add_index "picture_ratings", ["picpost_id", "created_at"], :name => "index_picture_ratings_on_picpost_id_and_created_at"
+  add_index "picture_ratings", ["user_id", "picpost_id"], :name => "index_picture_ratings_on_user_id_and_picpost_id", :unique => true
   add_index "picture_ratings", ["user_id"], :name => "index_picture_ratings_on_user_id"
 
   create_table "users", :force => true do |t|

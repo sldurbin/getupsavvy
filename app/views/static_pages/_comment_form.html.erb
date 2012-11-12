@@ -1,0 +1,14 @@
+<div class="post_comment_container" style="padding-top: 10px; padding-left: 10px; padding-right: 10px;">
+<span style="font-size: x-small;">Add comment</span>
+  <%= form_for(current_user.picture_comments.build(picpost_id: @picpost.id), remote: true) do |f| %>
+    <%= f.hidden_field :picpost_id, :value => @picpost.id %>
+    <%= f.text_area :comment, rows: 1, cols: 10 %>
+    <%= f.submit "Post" %>
+  <% end %>
+</div>
+
+<div class="comments_list" style="max-height: 125px; overflow-y: auto; padding: 10px;">
+  <% @picpost.picture_comments.each do |picture_comment| %>
+    <div class="usercomment" style="margin-bottom: 5px; background-color: #eeeeee; width: 160px;"><span class="bold"><i class="icon-user"></i><%= picture_comment.user.name %></span> <%= picture_comment.comment %></div>
+  <% end %>
+</div>

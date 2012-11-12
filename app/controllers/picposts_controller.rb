@@ -21,4 +21,13 @@ class PicpostsController < ApplicationController
   def destroy
   end
 
+  def view_comments
+    @picpost = Picpost.find(params[:picpost_id])
+    @comments = @picpost.picture_comments
+    respond_to do |format|
+      format.html 
+      format.js 
+    end
+  end
+
 end

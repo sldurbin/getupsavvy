@@ -1,14 +1,16 @@
 Matcher::Application.routes.draw do
-  get "picture_ratings/new"
-
-  get "picture_reviews/new"
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :picposts
   resources :picture_ratings
+  resources :picture_comments
 
   root to: 'static_pages#home'
+
+  #match '/picposts/:id/comments', to: 'picposts#view_comments', :as => :comments
+  #match '/comment', to: 'picposts#view_comments'
+  match '/comment', to: 'picposts#view_comments'
 
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'

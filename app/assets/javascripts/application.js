@@ -23,4 +23,5 @@ $(document).ready(function() {
   $("p.caption").css({
     'font-size': 'x-small'
   });
+
 });

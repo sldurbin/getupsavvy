@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  validates_uniqueness_of :picture_rating, scope: :picpost
 
   def rating(picpost)
     picture_rating = PictureRating.find_by_user_id_and_picpost_id(self.id, picpost.id)
@@ -38,6 +39,11 @@ class User < ActiveRecord::Base
   def unrate!(picpost)
     picture_ratings.find_by_picpost_id(picpost.id).destroy
   end
+
+  def comment!(picpost, comment)
+    picture_comments.create!(picpost_id: picpost.id, comment: comment)
+  end
+
 
   private
 
