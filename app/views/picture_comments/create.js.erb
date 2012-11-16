@@ -1,5 +1,14 @@
 $("div#comment_list_<%=@picpost.id %>").html("<%= escape_javascript(render('static_pages/comment_form', picpost: @picpost)) %>");
+
+var top_offset = 0;
+$(element_id).parents().each(function() {
+  if( $(this).hasClass("pic") == true ) {
+    top_offset = $(this).position().top;
+  }
+});
+
+
 $("#comments_container").css({
-  'top': $(element_id).position().top - $("#comments_container").height() - 15,
+  'top': $(element_id).position().top + top_offset - $("#comments_container").height() + 40,
 });
 

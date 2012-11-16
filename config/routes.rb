@@ -1,6 +1,10 @@
 Matcher::Application.routes.draw do
 
-  resources :users
+  resources :users do
+    member do
+      get :rater, :rated
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :picposts
   resources :picture_ratings

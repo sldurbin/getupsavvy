@@ -9,10 +9,13 @@
 <%= render 'modal' %>
 
 <div class="row">
-<div class="span12">
- 
-  <div id="picpost_container" style="position: absolute;"> 
-  <% @picposts.each do |picpost| %>
+<div class="span12" >
+  
+  <% @picposts.each_slice(4) do |picpost_four| %>
+    <div class="row picture_row">
+    <% picpost_four.each do |picpost| %>
+        <div class="span3">
+     
           <div class="pic coolshadow">
             <div class="picture_content">
               <div class="user_container"><i class="icon-user"></i> <%= picpost.user.name %></div>
@@ -25,8 +28,10 @@
                 <%= render 'rating_form', picpost: picpost %>
             </div>
           </div>
+        </div>
+    <% end %>
+    </div>
   <% end %>
-  </div>
 </div>
 </div>
 

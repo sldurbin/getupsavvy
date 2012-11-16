@@ -16,6 +16,13 @@ class User < ActiveRecord::Base
   has_many :picture_ratings, dependent: :destroy
   has_many :picture_comments, dependent: :destroy
 
+  has_many :comment_ratings, foreign_key: "rater_id", dependent: :destroy
+  has_many :rated_users, through: :comment_ratings, source: :rated
+  has_many :reverse_comment_ratings, foreign_key: "rated_id",
+                                     class_name: "CommentRating",
+                                     dependent: :destroy
+  has_many :rater_users, through: :reverse_comment_ratings, source: :rater
+
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
@@ -25,7 +32,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
-  validates_uniqueness_of :picture_rating, scope: :picpost
+#  validates_uniqueness_of :picture_rating, scope: :picpost
 
   def rating(picpost)
     picture_rating = PictureRating.find_by_user_id_and_picpost_id(self.id, picpost.id)
@@ -44,6 +51,13 @@ class User < ActiveRecord::Base
     picture_comments.create!(picpost_id: picpost.id, comment: comment)
   end
 
+  def rate_comment!(other_user,picture_comment,rating)
+    comment_ratings.create!(rated_id: other_user.id, picture_comment_id: picture_comment.id, rating: rating)
+  end
+
+  def unrate_comment!(other_user,picture_comment)
+    comment_ratings.find_by_rated_id_and_picture_comment_id(other_user.id,picture_comment.id)
+  end
 
   private
 

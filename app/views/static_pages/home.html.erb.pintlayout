@@ -11,7 +11,7 @@
 <div class="row">
 <div class="span12">
  
-  <div id="picpost_container" style="position: absolute;"> 
+  <div id="picpost_container"> 
   <% @picposts.each do |picpost| %>
           <div class="pic coolshadow">
             <div class="picture_content">

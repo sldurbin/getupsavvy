@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109014126) do
+ActiveRecord::Schema.define(:version => 20121113232109) do
+
+  create_table "comment_ratings", :force => true do |t|
+    t.integer  "rater_id"
+    t.integer  "rated_id"
+    t.boolean  "rating"
+    t.integer  "picture_comment_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "comment_ratings", ["picture_comment_id"], :name => "index_comment_ratings_on_picture_comment_id"
+  add_index "comment_ratings", ["rated_id"], :name => "index_comment_ratings_on_rated_id"
+  add_index "comment_ratings", ["rater_id", "rated_id", "picture_comment_id"], :name => "unique_comment_ratings", :unique => true
+  add_index "comment_ratings", ["rater_id"], :name => "index_comment_ratings_on_rater_id"
 
   create_table "picposts", :force => true do |t|
     t.string   "caption"
