@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @picposts = @user.picposts
   end
 
   def new
@@ -45,6 +46,14 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_url
+  end
+
+  def show_picposts
+    @picposts = current_user.picposts
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

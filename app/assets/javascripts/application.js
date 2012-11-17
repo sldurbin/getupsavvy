@@ -15,14 +15,30 @@
 //= require bootstrap
 //= require_tree .
 
+function setup_masonry(num_cols) {
+  var $picpostContainer = $("#picpost_container");
+  $picpostContainer.imagesLoaded( function() {
+    $picpostContainer.masonry({
+      itemSelector: '.pic',
+      columnWidth: function(containerWidth) {
+        return containerWidth / num_cols;
+      }
+    });
+  });
+  $("div.pic").css({
+    'margin-bottom': '20px',
+    'width': '210px'
+  });
+}
+
+
+
 /* HOME JS */
 $(document).ready(function() {
-  $("div.pic").css({
-    'font-size': 'x-small'
-  });
-  $("p.caption").css({
-    'font-size': 'x-small'
-  });
+
+/*  $("body").click(function(e) {
+    alert("X: " + e.pageX + " Y: " + e.pageY);
+  });*/
 
 });
 

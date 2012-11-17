@@ -13,14 +13,15 @@ var left_offset = 0;
 var top_offset = 0;
 $(element_id).parents().each(function() {
   if( $(this).hasClass("pic") == true ) {
-    left_offset = $(this).position().left;
+    left_offset = $(this).position().left + $("#picpost_container").position().left;
     top_offset = $(this).position().top;
   }
 });
-
+//alert($("#picpost_container").position().left);
+//alert(left_offset);
 
 $("#comments_container").css({
-  'left': $(element_id).position().left + left_offset + $("#comments_container").width()/2 + 15,
+  'left': $(element_id).position().left + left_offset - $("#comments_container").width()/2 + 10,
   'top': $(element_id).position().top + top_offset - $("#comments_container").height() + 40,
 });
 

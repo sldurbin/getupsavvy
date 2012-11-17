@@ -1,1 +1,2 @@
-$("div#rating_<%= @picpost.id %>").html("<%= escape_javascript(render('static_pages/rating_form', picpost: @picpost)) %>")
+$("div#rating_<%= @picpost.id %>").html("<%= escape_javascript(render('static_pages/rating_form', picpost: @picpost)) %>");
+$("#picpost_container").masonry('reload');

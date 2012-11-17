@@ -9,24 +9,8 @@
 <%= render 'modal' %>
 
 <div class="row">
-<div class="span12">
- 
-  <div id="picpost_container" style="position: absolute;"> 
-  <% @picposts.each do |picpost| %>
-          <div class="pic coolshadow">
-            <div class="picture_content">
-              <div class="user_container"><i class="icon-user"></i> <%= picpost.user.name %></div>
-              <%#= image_tag(picpost.picture_url) %>
-              <%= image_tag(picpost.picture.thumb.url) %>
-              <!--- <p class="caption" style="width: 150px; padding-bottom: 5px; padding-top: 5px; border-bottom: 1px solid #F5CED0;"><%= picpost.caption %></p> -->
-              <p class="caption" style="width: 150px; padding-bottom: 5px; padding-top: 5px; border-bottom: 1px solid #ACD3FC;"><%= picpost.caption %></p>
-            </div>
-            <div id=<%= "rating_#{picpost.id}" %> class="rating_panel">
-                <%= render 'rating_form', picpost: picpost %>
-            </div>
-          </div>
-  <% end %>
+  <div class="span12">
+    <%= render 'shared/picposts', picposts: @picposts %>
   </div>
-</div>
 </div>
 

@@ -15,6 +15,7 @@ Matcher::Application.routes.draw do
   #match '/picposts/:id/comments', to: 'picposts#view_comments', :as => :comments
   #match '/comment', to: 'picposts#view_comments'
   match '/comment', to: 'picposts#view_comments'
+  match '/user_picpost', to: 'users#show_picposts'
 
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'

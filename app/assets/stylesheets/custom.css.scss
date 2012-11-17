@@ -189,12 +189,13 @@ input, textarea, select, .uneditable-input {
   }
 }
 
-.pic {
+div.pic {
   //border: 1px solid #F5CED0;
   position: absolute;
   padding: 5px;
   background-color: #ffffff;
   overflow: auto;
+  font-size: x-small;
 }
 
 .picture_content {
@@ -205,6 +206,10 @@ input, textarea, select, .uneditable-input {
   margin-bottom: 10px;
 }
 
+p.caption {
+  font-size: x-small;
+}
+
 .shadow {
   -webkit-box-shadow: 5px 5px 2.5px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   -moz-box-shadow:    5px 5px 2.5px #ccc;  /* Firefox 3.5 - 3.6 */
@@ -213,6 +218,7 @@ input, textarea, select, .uneditable-input {
 
 .round {
   border-radius: 5px;
+  -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
 }
 
@@ -301,6 +307,12 @@ ul.sidebar {
   background-color: #222222;
   float: left;
   margin-left: 0px;
+  a {
+    color: #999999;
+    &:hover {
+      text-decoration: none;
+    }
+  }
   li {
     padding: 10px 10px 10px 10px;
     i {
@@ -308,11 +320,21 @@ ul.sidebar {
     }
     &:hover {
       cursor: pointer;
-      background-color: #ffffff;
-      color: #000000;
-      opacity: 0.5;     
+      background-color: #474747;
+      color: #999999;
     }
   }
 }
 
+ul li.bar_selected {
+  color: #000000;
+  background-color: #ffffff;
+  opacity: 0.5;
+  &:hover {
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #000000;
+    opacity: 0.5;
+  }
+}
 

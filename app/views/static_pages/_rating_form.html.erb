@@ -40,7 +40,7 @@
     </div>
 
     <div style="float: left;">
-      <%= form_tag(comment_path(picpost_id: picpost.id), remote: true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true) do |f| %>
+      <%= form_tag(comment_path(picpost_id: picpost.id), remote: true) do |f| %>
         <%= hidden_field_tag :picpost_id, picpost.id %>
         <% comment_id = "comment_#{picpost.id}" %>
         <span class="rating_icon_container comment_form_button" onclick="register_click($(this));"id="<%= comment_id %>"><i class="icon-comment"></i></span>

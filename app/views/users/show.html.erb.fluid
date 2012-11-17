@@ -1,6 +1,6 @@
 <% provide(:title, @user.name ) %>
-<div>
-  <div style="float: left;">
+<div class="row">
+  <div class="span2">
     <aside>
       <section>
         <h1>
@@ -13,7 +13,7 @@
     <ul class="sidebar coolshadow round">
 
       <%= link_to user_picpost_path, {remote: true} do %>
-        <li id="user_picposts">Posts<i class="icon-chevron-right"></i></li>
+        <li>Posts<i class="icon-chevron-right"></i></li>
       <% end %>
 
       <li>Comments<i class="icon-chevron-right"></i></li>
@@ -22,11 +22,12 @@
     </ul>
   </div>
 
-  <div style="float: left; width: 800px; padding-left: 30px;">
-    <div id="user_content_container">
-      <%= render 'shared/picposts', picposts: @picposts %> 
+  <div class="span9">
+    <div id="user_content_container"> 
     </div>
   </div>
+</div>
+
 </div>
   <div class="clearfix"></div>
 
