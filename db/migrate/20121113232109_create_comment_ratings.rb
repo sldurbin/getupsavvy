@@ -12,6 +12,6 @@ class CreateCommentRatings < ActiveRecord::Migration
     add_index :comment_ratings, :rater_id
     add_index :comment_ratings, :rated_id
     add_index :comment_ratings, :picture_comment_id
-    add_index :comment_ratings, [:rater_id, :rated_id, :picture_comment_id], unique: true, name: 'unique_comment_ratings'
+    add_index :comment_ratings, [:rater_id, :picture_comment_id], unique: true
   end
 end

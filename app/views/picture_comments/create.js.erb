@@ -1,5 +1,16 @@
 $("div#comment_list_<%=@picpost.id %>").html("<%= escape_javascript(render('static_pages/comment_form', picpost: @picpost)) %>");
 
+$("div.usercomment").hover(
+  function () {
+    $(this).find("div.rating_icon_box").show();
+    $(this).find("i").tooltip();
+  },
+  function () {
+    $(this).find("div.rating_icon_box").hide();
+  }
+);
+
+
 var top_offset = 0;
 $(element_id).parents().each(function() {
   if( $(this).hasClass("pic") == true ) {

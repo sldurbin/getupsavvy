@@ -1,7 +1,7 @@
 <% provide(:title, @user.name ) %>
 <div>
   <div style="float: left;">
-    <aside>
+    <aside style="width: 100px;">
       <section>
         <h1>
           <%= gravatar_for @user %>
@@ -16,9 +16,14 @@
         <li id="user_picposts">Posts<i class="icon-chevron-right"></i></li>
       <% end %>
 
-      <li>Comments<i class="icon-chevron-right"></i></li>
-      <li>Feedback<i class="icon-chevron-right"></i></li>
-      <li>Favorites<i class="icon-chevron-right"></i></li>
+      <%= link_to user_comment_path, {remote: true} do %>
+        <li id="user_comments">Comments<i class="icon-chevron-right"></i></li>
+      <% end %>
+
+      <%= link_to user_feedback_path, {remote: true} do %>
+        <li id="user_feedback">Feedback<i class="icon-chevron-right"></i></li>
+      <% end %>
+      <li id="user_favorites">Favorites<i class="icon-chevron-right"></i></li>
     </ul>
   </div>
 

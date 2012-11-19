@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20121113232109) do
 
   add_index "comment_ratings", ["picture_comment_id"], :name => "index_comment_ratings_on_picture_comment_id"
   add_index "comment_ratings", ["rated_id"], :name => "index_comment_ratings_on_rated_id"
-  add_index "comment_ratings", ["rater_id", "rated_id", "picture_comment_id"], :name => "unique_comment_ratings", :unique => true
+  add_index "comment_ratings", ["rater_id", "picture_comment_id"], :name => "index_comment_ratings_on_rater_id_and_picture_comment_id", :unique => true
   add_index "comment_ratings", ["rater_id"], :name => "index_comment_ratings_on_rater_id"
 
   create_table "picposts", :force => true do |t|

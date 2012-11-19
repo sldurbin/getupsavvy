@@ -3,6 +3,10 @@ class PicpostsController < ApplicationController
 
   def new
     @picpost = Picpost.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create

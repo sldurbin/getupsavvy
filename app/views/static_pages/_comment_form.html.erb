@@ -1,4 +1,4 @@
-<div class="post_comment_container" style="padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px;">
+<div class="post_comment_container" >
 <span style="font-size: x-small;">Add comment</span>
   <%= form_for(current_user.picture_comments.build(picpost_id: @picpost.id), remote: true) do |f| %>
     <%= f.hidden_field :picpost_id, :value => @picpost.id %>
@@ -7,8 +7,18 @@
   <% end %>
 </div>
 
-<div class="comments_list" style="max-height: 125px; overflow-y: auto; padding: 10px; padding-top: 0px;">
+<div class="comments_list">
   <% @picpost.picture_comments.each do |picture_comment| %>
-    <div class="usercomment round" style="padding: 5px; font-size: x-small; margin-bottom: 5px; background-color: #eeeeee; border: 1px solid #ACD3FC; width: 160px;"><span class="bold"><i class="icon-user"></i><%= picture_comment.user.name %></span> <span style="opacity: .7;">&nbsp;<%= picture_comment.comment %></span></div>
+    <div class="usercomment round">
+      <span class="full_comment"><span class="bold"><i class="icon-user"></i><%= picture_comment.user.name %></span> <span style="opacity: .7;">&nbsp;<%= picture_comment.comment %></span></span>
+      <div class="rate_comment">
+        <% if @picpost.user == current_user and picture_comment.user != current_user %>
+          <% comment_rating_id = "comment_rating_#{picture_comment.id}" %>
+          <div id="<%= comment_rating_id %>" class="rating_icon_box" style="display: none;">
+            <%= render 'shared/rate_comment_form', picture_comment: picture_comment %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </div>

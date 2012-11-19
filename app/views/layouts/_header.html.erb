@@ -4,7 +4,11 @@
       <%= link_to image_tag("logo.png", alt: "Clashing or Dashing"), root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Add new", "#" %></li>
+          <li>
+            <%= link_to new_picpost_path, remote: true  do %>
+              Add New
+            <% end %>
+          </li>
           <li><%= link_to "The Runway", root_path %></li>
           <li><%= link_to "Fashionistas", "#" %></li>
           <li><%= link_to "Help", help_path %></li>

@@ -51,12 +51,16 @@ class User < ActiveRecord::Base
     picture_comments.create!(picpost_id: picpost.id, comment: comment)
   end
 
-  def rate_comment!(other_user,picture_comment,rating)
-    comment_ratings.create!(rated_id: other_user.id, picture_comment_id: picture_comment.id, rating: rating)
+  def rate_comment!(picture_comment,rating)
+    comment_ratings.create!(rated_id: picture_comment.user.id, picture_comment_id: picture_comment.id, rating: rating)
   end
 
-  def unrate_comment!(other_user,picture_comment)
-    comment_ratings.find_by_rated_id_and_picture_comment_id(other_user.id,picture_comment.id)
+  def unrate_comment!(picture_comment)
+    comment_ratings.find_by_rated_id_and_picture_comment_id(picture_comment.user.id,picture_comment.id).destroy
+  end
+
+  def get_comment_rating(picture_comment)
+    comment_ratings.find_by_picture_comment_id(picture_comment.id)
   end
 
   private

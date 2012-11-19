@@ -9,6 +9,7 @@ Matcher::Application.routes.draw do
   resources :picposts
   resources :picture_ratings
   resources :picture_comments
+  resources :comment_ratings, only: [:create, :destroy]
 
   root to: 'static_pages#home'
 
@@ -16,6 +17,8 @@ Matcher::Application.routes.draw do
   #match '/comment', to: 'picposts#view_comments'
   match '/comment', to: 'picposts#view_comments'
   match '/user_picpost', to: 'users#show_picposts'
+  match '/user_comment', to: 'users#show_comments'
+  match '/user_feedback', to: 'users#show_feedback'
 
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'

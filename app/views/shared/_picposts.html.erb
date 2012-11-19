@@ -2,6 +2,11 @@
 <div id="picpost_container" style="position: absolute;">
   <% @picposts.each do |picpost| %>
           <div class="pic coolshadow">
+
+            <div class="favorite_div" id="favorite_div_<%= picpost.id %>" style="display: none; position: absolute; top: 10px; right: 10px;">
+              <%= render 'shared/add_to_favorites.html.erb', picpost: picpost %>
+            </div>
+
             <div class="picture_content">
               <div class="user_container"><i class="icon-user"></i> <%= picpost.user.name %></div>
               <%#= image_tag(picpost.picture_url) %>

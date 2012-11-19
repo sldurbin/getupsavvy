@@ -56,6 +56,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def show_comments
+    @picposts = current_user.picture_comments.map{ |p| p.picpost }.uniq
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+ 
+  def show_feedback
+    @picposts = current_user.picture_ratings.map{ |p| p.picpost }
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   private
 
     def correct_user

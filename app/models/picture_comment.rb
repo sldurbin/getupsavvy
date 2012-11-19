@@ -3,7 +3,7 @@ class PictureComment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :picpost
-
+  has_one :comment_rating, dependent: :destroy
   
   validates :picpost_id, presence: true
   validates :user_id, presence: true

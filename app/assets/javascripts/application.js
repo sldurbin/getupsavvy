@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require_tree .
+//= require jquery_masonry_min
 
 function setup_masonry(num_cols) {
   var $picpostContainer = $("#picpost_container");
@@ -31,6 +31,15 @@ function setup_masonry(num_cols) {
   });
 }
 
+function register_click(form) {
+  if( $("#comments_container").length == 0  ) {
+    $(form).submit();
+  } else {
+    $("#comments_container").remove();
+  }
+}
+
+
 
 
 /* HOME JS */
@@ -39,6 +48,15 @@ $(document).ready(function() {
 /*  $("body").click(function(e) {
     alert("X: " + e.pageX + " Y: " + e.pageY);
   });*/
+ $("div.pic").hover(
+    function () {
+      $(this).find("div.favorite_div").show();
+    }, 
+    function () {
+      $(this).find("div.favorite_div").hide();
+    }
+  );
+ 
 
 });
 

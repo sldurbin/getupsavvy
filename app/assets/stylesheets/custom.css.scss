@@ -47,7 +47,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #999;
+  /*color: #999;*/
 }
 
 p {
@@ -191,7 +191,7 @@ input, textarea, select, .uneditable-input {
 
 div.pic {
   //border: 1px solid #F5CED0;
-  position: absolute;
+  position: relative;
   padding: 5px;
   background-color: #ffffff;
   overflow: auto;
@@ -220,6 +220,24 @@ p.caption {
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
+}
+
+.roundtop {
+  border-top-left-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-top-right-radius: 5px;
+}
+
+.roundbottom {
+  border-bottom-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-bottom-right-radius: 5px;
 }
 
 span.rating_icon_container {
@@ -295,9 +313,27 @@ div.undo {
 }
 
 .coolshadow {
-  box-shadow: 0 1px 3px rgba(34, 25, 25, 0.5);
-  -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.5);
-  -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.5);
+  box-shadow: 0 2px 3px rgba(34, 25, 25, 0.5);
+  -moz-box-shadow: 0 2px 3px rgba(34,25,25,0.5);
+  -webkit-box-shadow: 0 2px 3px rgba(34, 25, 25, 0.5);
+}
+
+.coolshadow_bottom {
+  box-shadow: 0 2px 5px rgba(34, 25, 25, 0.5);
+  -moz-box-shadow: 0 2px 5px rgba(34,25,25,0.5);
+  -webkit-box-shadow: 0 2px 5px rgba(34, 25, 25, 0.5);
+}
+
+.coolshadow_inverse {
+  box-shadow: 0 2px 3px rgba(232, 232, 232, 0.5);
+  -moz-box-shadow: 0 2px 3px rgba(232,232,232,0.5);
+  -webkit-box-shadow: 0 2px 3px rgba(232, 232, 232, 0.5);
+}
+
+.whiteshadow {
+  -moz-box-shadow: 0 2 3px #fff;
+  -webkit-box-shadow: 0 2 3px #fff;
+  box-shadow: 0px 2px 3px #fff;
 }
 
 ul.sidebar {
@@ -312,7 +348,7 @@ ul.sidebar {
     &:hover {
       text-decoration: none;
     }
-  }
+  } 
   li {
     padding: 10px 10px 10px 10px;
     i {
@@ -338,3 +374,110 @@ ul li.bar_selected {
   }
 }
 
+li#user_picposts {
+  &:hover {
+    border-top-left-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-top-right-radius: 5px;
+  }
+}
+
+li#user_favorites {
+  &:hover {
+    border-bottom-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-bottom-right-radius: 5px;
+  }
+}
+
+div.rating_icon_box i {
+  color: #eeeeee;
+  &:hover {
+    cursor: pointer;
+    color: #000000;
+  }
+}
+
+div.usercomment form {
+  display: inline;
+}
+
+div.overlay {
+  width: 100%; 
+  height: 100%; 
+  background-color: #000000; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  z-index: 1999; 
+  opacity: 0.8;
+}
+
+div.usercomment {
+  padding: 10px 10px 10px 5px; 
+  font-size: x-small; 
+  margin-bottom: 5px; 
+  background-color: #eeeeee; 
+  border: 1px solid #ACD3FC; 
+  width: 160px; 
+  overflow: auto; 
+  position: relative;
+}
+
+div.comments_list {
+  max-height: 125px; 
+  overflow-y: auto; 
+  padding: 10px; 
+  padding-top: 0px; 
+  padding-bottom: 20px;
+}
+
+div.rate_comment {
+  position: absolute; 
+  float: right; 
+  top: 0px; 
+  right: 3px;
+}
+
+div.post_comment_container {
+  padding: 10px 10px 0px 10px;
+}
+
+.gradient {
+  background: -moz-linear-gradient(center top, rgb(224, 224, 224), rgb(170, 170, 170)) repeat scroll 0% 0% transparent;
+  background: -webkit-linear-gradient(rgb(224, 224, 224), rgb(170, 170, 170));
+  background: -ms-linear-gradient(top, rgb(224, 224, 224), rgb(170, 170, 170));
+  background: -o-linear-gradient(top, rgb(224, 224, 224), rgb(170, 170, 170));
+}
+
+button.exit_button {
+  right: 10px; 
+  top: 15px; 
+  font-size: x-large; 
+  font-weight: bold; 
+  color: #696969; 
+  padding: 0px 5px 2px 5px; 
+  position: absolute;
+  &:hover {
+    opacity: 0.6;
+    color: #000000;
+  }
+}
+
+div.favorite_div button {
+  background-color: #222222; 
+  color: #999999;
+  border: 1px solid #999999;
+  padding: 5px;
+  &:hover {
+    cursor: pointer;
+    background-color: #474747;
+    color: #999999;
+  }
+}

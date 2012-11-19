@@ -5,9 +5,20 @@ $("#comments_container").css({
   'background-color': '#ffffff',
   'border': '1px solid black',
   'padding': '5px',
-  'width': '200px'
+  'width': '210px'
 });
 $("#comments_container").html("<%= escape_javascript render(partial: 'static_pages/comment_form_container', picpost: @picpost) %>");
+
+$("div.usercomment").hover(
+  function () {
+    $(this).find("div.rating_icon_box").show();
+    $(this).find("i").tooltip();
+  }, 
+  function () {
+    $(this).find("div.rating_icon_box").hide();
+  }
+);
+
 
 var left_offset = 0;
 var top_offset = 0;
@@ -19,7 +30,6 @@ $(element_id).parents().each(function() {
 });
 //alert($("#picpost_container").position().left);
 //alert(left_offset);
-
 $("#comments_container").css({
   'left': $(element_id).position().left + left_offset - $("#comments_container").width()/2 + 10,
   'top': $(element_id).position().top + top_offset - $("#comments_container").height() + 40,
