@@ -1,0 +1,8 @@
+<%= form_for(current_user.comment_ratings.build(picture_comment_id: picture_comment.id), html: {id: "report_user_form_#{picture_comment.id}"}, remote: true) do |f| %>
+  <%= f.hidden_field :picture_comment_id, :value => picture_comment.id %>
+  <%= f.hidden_field :rating, :value => "false" %>
+  <% form_name = "#report_user_form_#{picture_comment.id}" %>
+  <% submit_form = "$(\"#{form_name}\").submit();" %>
+  <i class="icon-flag" rel="tooltip" title="Flag as Inappropriate" onclick="<%= submit_form %>"></i><br/>
+<% end %>
+

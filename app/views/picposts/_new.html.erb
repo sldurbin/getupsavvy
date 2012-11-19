@@ -1,0 +1,21 @@
+<div style="width: 100%; color: #696969; height: 60px; border-bottom: 1px solid #999999; position: relative; overflow: hidden;" class="roundtop gradient">
+  <h2 style="padding-top: 20px; padding-bottom: 10px;">Add Picture</h2>
+  <button id="exit_add_picture" class="exit_button">x</button>
+</div>
+
+<div style="padding: 0px 30px 30px 30px; background-color: #ffffff;" class="roundbottom">
+  <br/>
+
+  <%= form_for(@picpost) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %> 
+
+    <%= f.label :picture %>
+    <%= f.file_field :picture %>
+    <%= f.hidden_field :picture_cache %> 
+
+    <%= f.label :caption %>
+    <%= f.text_area :caption, rows: '3' %>
+
+    <%= f.submit "Upload", class: "button-link" %>
+  <% end %>
+</div>

@@ -1,0 +1,32 @@
+$("body").append("<div class='overlay'></div>");
+
+$("body").append("<div id='add_picpost' style='background-color: #ffffff; position: fixed; z-index: 2000; top: 0px; opacity: 0; border: 1px solid #000000;' class='round'></div>");
+
+$("div#add_picpost").html("<%= escape_javascript render(partial: 'picposts/new', picpost: @picpost) %>");
+
+
+$("div#add_picpost").css({
+  //'top': $(window).height()/2 - $("div#add_picpost").height()/2,
+  'left': $(window).width()/2 - $("div#add_picpost").width()/2
+});
+
+$('div#add_picpost').animate({
+  opacity: 1,
+  top: $(window).height()/2 - $("div#add_picpost").height()/2 + 'px'
+}, 500, function() {
+  // Animation complete.
+});
+
+$("button#exit_add_picture").click(function() {
+  $("div#add_picpost").remove();
+  $("div.overlay").remove();
+});
+
+//$("div#add_picpost").slideDown();
+
+/*$("div#add_picpost").css({
+  'top': $("div#add_picpost").position().top - $("div#add_picpost").height()/2,       
+  'left': $("div#add_picpost").position().left - $("div#add_picpost").width()/2
+});*/
+
+

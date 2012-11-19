@@ -1,0 +1,2 @@
+$("div#comment_rating_<%= @picture_comment.id %>").find("i").tooltip("hide");
+$("div#comment_rating_<%= @picture_comment.id %>").html("<%= escape_javascript(render('shared/rate_comment_form', picture_comment: @picture_comment)) %>");

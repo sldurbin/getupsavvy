@@ -1,0 +1,9 @@
+<% rating = current_user.get_comment_rating(picture_comment) %>
+<% if rating == nil %>
+  <%= render 'shared/thank_user_form', picture_comment: picture_comment %>
+  <%= render 'shared/report_user_form', picture_comment: picture_comment %>
+<% elsif rating.rating == true %> 
+  <%= render 'shared/remove_thanks_form', picture_comment: picture_comment %>
+<% elsif rating.rating == false %>
+  <%= render 'shared/remove_report_form', picture_comment: picture_comment %> 
+<% end %>
