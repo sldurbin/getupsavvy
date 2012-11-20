@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
                                      dependent: :destroy
   has_many :rater_users, through: :reverse_comment_ratings, source: :rater
 
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_picposts, through: :favorites, source: :picpost
+
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
@@ -61,6 +64,18 @@ class User < ActiveRecord::Base
 
   def get_comment_rating(picture_comment)
     comment_ratings.find_by_picture_comment_id(picture_comment.id)
+  end
+ 
+  def favored_picpost?(picpost)
+    favorites.find_by_picpost_id(picpost.id)
+  end
+
+  def favor_picpost!(picpost)
+    favorites.create!(picpost_id: picpost.id)
+  end
+
+  def unfavor_picpost!(picpost)
+    favorites.find_by_picpost_id(picpost.id).destroy
   end
 
   private

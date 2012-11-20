@@ -1,1 +1,4 @@
-<button class="round"><i class="icon-plus icon-white" style="opacity: 0.4;"></i>&nbsp;Favorites</button>
+<%= form_for(current_user.favorites.build(picpost_id: picpost.id), remote: true) do |f| %>
+  <%= f.hidden_field :picpost_id, value: picpost.id %>
+  <button class="grey_colors round"><i class="icon-plus icon-white" style="opacity: 0.4;"></i>&nbsp;Favorites</button>
+<% end %>

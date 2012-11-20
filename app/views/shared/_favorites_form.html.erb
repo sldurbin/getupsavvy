@@ -1,0 +1,5 @@
+<% if current_user.favored_picpost?(picpost) %>
+  <%= render 'shared/remove_from_favorites', picpost: picpost %>
+<% else %>
+  <%= render 'shared/add_to_favorites', picpost: picpost %>
+<% end %>

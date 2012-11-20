@@ -72,6 +72,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def show_favorites
+    @picposts = current_user.favorites.map{ |f| f.picpost }
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   private
 
     def correct_user

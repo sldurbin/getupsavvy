@@ -39,7 +39,16 @@ function register_click(form) {
   }
 }
 
-
+function setup_favorites_button() {
+  $("div.pic").hover(
+    function () {
+      $(this).find("div.favorite_div").show();
+    },
+    function () {
+      $(this).find("div.favorite_div").hide();
+    }
+  );
+}
 
 
 /* HOME JS */
@@ -48,16 +57,5 @@ $(document).ready(function() {
 /*  $("body").click(function(e) {
     alert("X: " + e.pageX + " Y: " + e.pageY);
   });*/
- $("div.pic").hover(
-    function () {
-      $(this).find("div.favorite_div").show();
-    }, 
-    function () {
-      $(this).find("div.favorite_div").hide();
-    }
-  );
- 
-
+  setup_favorites_button();
 });
-
-

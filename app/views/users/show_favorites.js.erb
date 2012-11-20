@@ -1,4 +1,7 @@
 $("#user_content_container").html("<%= escape_javascript render(partial: 'shared/picposts', picposts: @picposts) %>");
 setup_masonry(3);
-style_sidebar($("li#user_comments"));
+style_sidebar($("li#user_favorites"));
 setup_favorites_button();
+$("button.remove_favorite").click(function() {
+  $(this).prev('input[name=favorite[reload]]').val("true");
+});

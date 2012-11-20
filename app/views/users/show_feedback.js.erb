@@ -1,3 +1,5 @@
 $("#user_content_container").html("<%= escape_javascript render(partial: 'shared/picposts', picposts: @picposts) %>");
 setup_masonry(3);
 style_sidebar($("li#user_feedback"));
+setup_favorites_button();
+//TODO: RELOAD PICPOSTS ON "REMOVE FROM FAVORITES"

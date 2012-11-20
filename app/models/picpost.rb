@@ -4,6 +4,9 @@ class Picpost < ActiveRecord::Base
   belongs_to :user
   has_many :picture_ratings, dependent: :destroy
   has_many :picture_comments, dependent: :destroy
+  
+  has_many :favorites, dependent: :destroy
+  has_many :favored, through: :favorites, source: :user
 
   validates :user_id, presence: true
   validates :caption, length: { maximum: 100 }

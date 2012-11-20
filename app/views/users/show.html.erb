@@ -23,7 +23,10 @@
       <%= link_to user_feedback_path, {remote: true} do %>
         <li id="user_feedback">Feedback<i class="icon-chevron-right"></i></li>
       <% end %>
-      <li id="user_favorites">Favorites<i class="icon-chevron-right"></i></li>
+
+      <%= link_to user_favorite_path, {remote: true } do %>
+        <li id="user_favorites">Favorites<i class="icon-chevron-right"></i></li>
+      <% end %>
     </ul>
   </div>
 

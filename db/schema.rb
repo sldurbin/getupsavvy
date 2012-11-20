@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113232109) do
+ActiveRecord::Schema.define(:version => 20121119224037) do
 
   create_table "comment_ratings", :force => true do |t|
     t.integer  "rater_id"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(:version => 20121113232109) do
   add_index "comment_ratings", ["rated_id"], :name => "index_comment_ratings_on_rated_id"
   add_index "comment_ratings", ["rater_id", "picture_comment_id"], :name => "index_comment_ratings_on_rater_id_and_picture_comment_id", :unique => true
   add_index "comment_ratings", ["rater_id"], :name => "index_comment_ratings_on_rater_id"
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "picpost_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "favorites", ["picpost_id"], :name => "index_favorites_on_picpost_id"
+  add_index "favorites", ["user_id", "picpost_id"], :name => "index_favorites_on_user_id_and_picpost_id", :unique => true
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
   create_table "picposts", :force => true do |t|
     t.string   "caption"

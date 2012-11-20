@@ -1,0 +1,4 @@
+<%= form_for(current_user.favorites.find_by_picpost_id(picpost.id), html: {method: :delete}, remote: true) do |f| %>
+  <%= f.hidden_field :reload, value: "false" %>
+  <button class="remove_favorite round"><i class="icon-remove icon-white" style="opacity: 0.4;"></i>&nbsp;Favorites</button>
+<% end %>
