@@ -5,3 +5,5 @@ setup_favorites_button();
 $("button.remove_favorite").click(function() {
   $(this).prev('input[name=favorite[reload]]').val("true");
 });
+$("div.user_header").html("<h4>Favorites</h4><br/>");
+$("#stat_container").html("<%= escape_javascript render(partial: 'shared/favorite_stats', picposts: @picposts) %>");

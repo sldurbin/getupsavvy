@@ -50,6 +50,12 @@ h2 {
   /*color: #999;*/
 }
 
+h4 {
+//  font-size: 11px;
+  color: #999;
+  text-transform: uppercase;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -491,3 +497,16 @@ button.inverse_colors {
     cursor: pointer;
   }
 }
+
+div#stat_container table {
+  margin-top: 10px;
+  color: #555555;
+  tr td:last-child {
+    text-align: right;
+    padding-left: 10px;
+  }
+  tr td:first-child {
+    text-align: left;
+  }
+}
+

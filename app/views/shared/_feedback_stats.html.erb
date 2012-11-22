@@ -1,0 +1,5 @@
+<h6>Stats</h6>
+<table>
+  <tr><td><%= @picposts.flat_map(&:picture_ratings).select{ |pr| pr.rating == true && pr.user == current_user }.count %></td><td>Dashing</td></tr>
+  <tr><td><%= @picposts.flat_map(&:picture_ratings).select{ |pr| pr.rating == false && pr.user == current_user }.count %></td><td>Clashing</td></tr>
+</table>

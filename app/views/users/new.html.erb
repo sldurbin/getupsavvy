@@ -18,6 +18,10 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
 
+      <br/>
+      <%= recaptcha_tags :display => {:theme => 'white'} %>
+      <br/>
+
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

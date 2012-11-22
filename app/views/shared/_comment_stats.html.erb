@@ -1,0 +1,5 @@
+<h6>Stats</h6>
+<table>
+  <tr><td><%= @picposts.flat_map(&:picture_comments).select{ |pc| pc.user == current_user }.count %></td><td>Comments</td></td></tr>
+  <tr><td><%= @picposts.flat_map(&:picture_comments).select{ |pc| pc.user == User.first}.flat_map(&:comment_rating).select{ |cr| !cr.nil? && cr.rating == true }.count %></td><td>Thanks</td></tr>
+</table>

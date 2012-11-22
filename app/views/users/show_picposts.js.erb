@@ -2,3 +2,5 @@ $("#user_content_container").html("<%= escape_javascript render(partial: 'shared
 setup_masonry(3);
 style_sidebar($("li#user_picposts"));
 setup_favorites_button();
+$("div.user_header").html("<h4>Posts</h4><br/>");
+$("#stat_container").html("<%= escape_javascript render(partial: 'shared/picpost_stats', picposts: @picposts) %>");

@@ -28,6 +28,16 @@
         <li id="user_favorites">Favorites<i class="icon-chevron-right"></i></li>
       <% end %>
     </ul>
+
+    <div id="stat_container" style="margin-top: 180px;">
+      <%= render 'shared/picpost_stats', picposts: @picposts %>
+    </div>
+
+  </div>
+
+  <div class="user_header" style="float: left; width: 800px; padding-left: 30px;">
+    <h4>Posts</h4>
+    <br/>
   </div>
 
   <div style="float: left; width: 800px; padding-left: 30px;">

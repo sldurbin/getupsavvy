@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require 'net/http'
   before_filter :signed_in_user, only: [:index, :edit, :update]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :admin_user, only: :destroy
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.save
+    if verify_recaptcha(@user) && @user.save
       sign_in @user
       flash[:success] = "Welcome to the Sample App"
       redirect_to @user
