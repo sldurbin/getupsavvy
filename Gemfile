@@ -10,6 +10,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'carrierwave'
 gem 'mini_magick', '~> 3.4'
 gem 'recaptcha', :require => 'recaptcha/rails'
+gem 'devise', '2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

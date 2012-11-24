@@ -1,11 +1,13 @@
 Matcher::Application.routes.draw do
 
+  devise_for :users, controllers: { registrations: 'registrations' }  
+
   resources :users do
     member do
       get :rater, :rated
     end
   end
-  resources :sessions, only: [:new, :create, :destroy]
+  #resources :sessions, only: [:new, :create, :destroy]
   resources :picposts
   resources :picture_ratings
   resources :picture_comments
@@ -23,8 +25,8 @@ Matcher::Application.routes.draw do
   match '/user_favorite', to: 'users#show_favorites'
 
   match '/signup', to: 'users#new'
-  match '/signin', to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  #match '/signin', to: 'sessions#new'
+  #match '/signout', to: 'sessions#destroy', via: :delete
 
   match '/about', to: 'static_pages#about'
   match '/help', to: 'static_pages#help'

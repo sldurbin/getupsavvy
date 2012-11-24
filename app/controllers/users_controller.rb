@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   require 'net/http'
-  before_filter :signed_in_user, only: [:index, :edit, :update]
-  before_filter :correct_user, only: [:edit, :update]
-  before_filter :admin_user, only: :destroy
+  #before_filter :signed_in_user, only: [:index, :edit, :update]
+  #before_filter :correct_user, only: [:edit, :update]
+  #before_filter :admin_user, only: :destroy
+  before_filter :authenticate_user!, only: [:index, :edit, :update]
 
   def index
     @users = User.paginate(page: params[:page])

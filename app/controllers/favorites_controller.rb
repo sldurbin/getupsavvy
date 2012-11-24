@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
-  before_filter :signed_in_user
+  #before_filter :signed_in_user
+  before_filter :authenticate_user!
 
   def create
     @picpost = Picpost.find_by_id(params[:favorite][:picpost_id])
