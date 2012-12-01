@@ -14,12 +14,12 @@ $("div.usercomment").hover(
 var top_offset = 0;
 $(element_id).parents().each(function() {
   if( $(this).hasClass("pic") == true ) {
-    top_offset = $(this).position().top;
+    top_offset = $(this).position().top + $("#picpost_container").position().top;
   }
 });
 
 
 $("#comments_container").css({
-  'top': $(element_id).position().top + top_offset - $("#comments_container").height() + 40,
+  'top': $(element_id).position().top + top_offset - $("#comments_container").height() - 20,
 });
 

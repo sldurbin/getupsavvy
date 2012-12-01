@@ -1,12 +1,14 @@
-<% provide(:title, @picpost.user.name ) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= image_tag(@picpost.picture_url) %>
-        <p><%= @picpost.caption %></p>
-      </h1>
-    </section>
-  </aside>
+<div class="container">
+  <% provide(:title, @picpost.user.name ) %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <h1>
+          <%= image_tag(@picpost.picture_url) %>
+          <p><%= @picpost.caption %></p>
+        </h1>
+      </section>
+    </aside>
+  </div>
 </div>
 

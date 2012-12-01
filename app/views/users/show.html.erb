@@ -12,25 +12,25 @@
 
     <ul class="sidebar coolshadow round">
 
-      <%= link_to user_picpost_path, {remote: true} do %>
-        <li id="user_picposts">Posts<i class="icon-chevron-right"></i></li>
+      <%= link_to user_picpost_path(id: @user.id), {remote: true} do %>
+        <li id="user_picposts" class="<%= @frame == 'picposts' ? 'bar_selected' : '' %>">Posts<i class="icon-chevron-right"></i></li>
       <% end %>
 
-      <%= link_to user_comment_path, {remote: true} do %>
-        <li id="user_comments">Comments<i class="icon-chevron-right"></i></li>
+      <%= link_to user_comment_path(id: @user.id), {remote: true} do %>
+        <li id="user_comments" class="<%= @frame == 'comments' ? 'bar_selected' : '' %>">Comments<i class="icon-chevron-right"></i></li>
       <% end %>
 
-      <%= link_to user_feedback_path, {remote: true} do %>
-        <li id="user_feedback">Feedback<i class="icon-chevron-right"></i></li>
+      <%= link_to user_feedback_path(id: @user.id), {remote: true} do %>
+        <li id="user_feedback" class="<%= @frame == 'feedback' ? 'bar_selected' : '' %>">Feedback<i class="icon-chevron-right"></i></li>
       <% end %>
 
-      <%= link_to user_favorite_path, {remote: true } do %>
-        <li id="user_favorites">Favorites<i class="icon-chevron-right"></i></li>
+      <%= link_to user_favorite_path(id: @user.id), {remote: true } do %>
+        <li id="user_favorites" class="<%= @frame == 'favorites' ? 'bar_selected' : '' %>">Favorites<i class="icon-chevron-right"></i></li>
       <% end %>
     </ul>
 
     <div id="stat_container" style="margin-top: 180px;">
-      <%= render 'shared/picpost_stats', picposts: @picposts %>
+      <%= render 'shared/stats_container', picposts: @picposts %>
     </div>
 
   </div>
@@ -46,5 +46,7 @@
     </div>
   </div>
 </div>
-  <div class="clearfix"></div>
+
+<div class="clearfix"></div>
+
 

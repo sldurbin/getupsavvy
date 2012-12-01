@@ -11,6 +11,9 @@ gem 'carrierwave'
 gem 'mini_magick', '~> 3.4'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'devise', '2.0'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -15,7 +15,9 @@ class FavoritesController < ApplicationController
     @picpost = Favorite.find(params[:id]).picpost
     current_user.unfavor_picpost!(@picpost)
     if params[:favorite][:reload] == "true"
-      redirect_to user_favorite_path, id: current_user.id
+      redirect_to user_favorite_path(id: current_user.id)
+      #TODO: Fix this to address the case where you are looking at somebody 
+      #      else's favorites
     else 
       respond_to do |format|
         format.html

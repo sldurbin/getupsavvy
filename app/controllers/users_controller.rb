@@ -6,12 +6,32 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, only: [:index, :edit, :update]
 
   def index
-    @users = User.paginate(page: params[:page])
+    #@users = User.paginate(page: params[:page])
+    @top_posters = User.order("picposts_count desc").limit(5).all
+    @top_commenters = User.order("picture_comments_count desc").limit(5).all
+    @most_dashing = User.order("good_picture_ratings_count desc").limit(5).all
+    @most_thanked = User.order("good_comment_ratings_count desc").limit(5).all
+    @most_favorited = User.order("favorited_count desc").limit(5).all
   end
 
   def show
     @user = User.find(params[:id])
-    @picposts = @user.picposts
+    @frame = params[:frame]
+    if @frame == 'picposts'
+      @picposts = @user.picposts
+    elsif @frame == 'comments'
+      @picposts = @user.picture_comments.map{ |p| p.picpost }.uniq   
+    elsif @frame == 'feedback'
+      @picposts = @user.picture_ratings.map{ |p| p.picpost }
+    elsif @frame == 'favorites'
+      @picposts = @user.favorites.map{ |f| f.picpost } 
+    else
+      @picposts = []
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -51,7 +71,8 @@ class UsersController < ApplicationController
   end
 
   def show_picposts
-    @picposts = current_user.picposts
+    @user = User.find(params[:id])
+    @picposts = @user.picposts
     respond_to do |format|
       format.html
       format.js
@@ -59,7 +80,8 @@ class UsersController < ApplicationController
   end
 
   def show_comments
-    @picposts = current_user.picture_comments.map{ |p| p.picpost }.uniq
+    @user = User.find(params[:id])
+    @picposts = @user.picture_comments.map{ |p| p.picpost }.uniq
     respond_to do |format|
       format.html
       format.js
@@ -67,7 +89,8 @@ class UsersController < ApplicationController
   end
  
   def show_feedback
-    @picposts = current_user.picture_ratings.map{ |p| p.picpost }
+    @user = User.find(params[:id])
+    @picposts = @user.picture_ratings.map{ |p| p.picpost }
     respond_to do |format|
       format.html
       format.js
@@ -75,7 +98,8 @@ class UsersController < ApplicationController
   end
 
   def show_favorites
-    @picposts = current_user.favorites.map{ |f| f.picpost }
+    @user = User.find(params[:id])
+    @picposts = @user.favorites.map{ |f| f.picpost }
     respond_to do |format|
       format.html
       format.js

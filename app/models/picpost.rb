@@ -1,7 +1,7 @@
 class Picpost < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
   attr_accessible :caption, :picture, :picture_cache
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   has_many :picture_ratings, dependent: :destroy
   has_many :picture_comments, dependent: :destroy
   

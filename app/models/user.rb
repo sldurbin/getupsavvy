@@ -13,10 +13,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :name, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :name, :password, :password_confirmation, :remember_me, :provider, :uid, :good_comment_ratings_count, :bad_comment_ratings_count, :good_picture_ratings_count, :bad_picture_ratings_count #TODO: ensure hacker can't update last 4 on post
   ##attr_accessible :email, :name, :password, :password_confirmation #Removed for devise
   ##has_secure_password # Removed for devise
   has_many :picposts, dependent: :destroy
@@ -87,9 +87,50 @@ class User < ActiveRecord::Base
     favorites.find_by_picpost_id(picpost.id).destroy
   end
 
+  def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+
+    unless user
+      password = Devise.friendly_token[0,20]
+      user = User.create(name:auth.extra.raw_info.name,
+                           provider:auth.provider,
+                           uid:auth.uid,
+                           email:auth.info.email,
+                           password:password,
+                           password_confirmation:password
+                           )
+    end
+    user
+  end
+
+
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    
+    unless user
+      password = Devise.friendly_token[0,20]
+      user = User.create(name:auth.extra.raw_info.name,
+                           provider:auth.provider,
+                           uid:auth.uid,
+                           email:auth.info.email,
+                           password:password,
+                           password_confirmation:password
+                           )
+    end
+    user
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
+
   private
 
-    def create_remember_token
-      self.remember_token = SecureRandom.urlsafe_base64
-    end
+    #def create_remember_token
+    #  self.remember_token = SecureRandom.urlsafe_base64
+    #end
 end

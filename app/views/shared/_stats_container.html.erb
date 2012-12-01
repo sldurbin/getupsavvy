@@ -1,0 +1,11 @@
+<% if @frame == 'picposts' %>
+  <%= render 'shared/picpost_stats', picposts: @picposts %>
+<% elsif @frame == 'comments' %>
+  <%= render 'shared/comment_stats', picposts: @picposts %>
+<% elsif @frame == 'feedback' %>
+  <%= render 'shared/feedback_stats', picposts: @picposts %>
+<% elsif @frame == 'favorites' %>
+  <%= render 'shared/favorite_stats', picposts: @picposts %>
+<% else %>
+  <p>Select view</p>
+<% end %>

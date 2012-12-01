@@ -1,6 +1,6 @@
 $(document).ready(function() {
   setup_masonry(3);
-  style_sidebar($("li#user_picposts"));
+//  style_sidebar($("li#user_picposts"));
 });
 
 

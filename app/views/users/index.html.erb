@@ -1,10 +1,33 @@
-<% provide(:title, 'All users') %>
-<h1>All users</h1>
+  <div style="text-align: center;">
+    <% provide(:title, 'Users') %>
+    <h3>Top Fashionistas</h3>
+  </div>
 
-<%= will_paginate %>
+  <div class="row" style="margin-top: 20px;">
+    <div style="float: left;">
+      Top Posters:
+      <%= render 'users/top_posters', users: @top_posters %>
+    </div>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
+    <div style="float: left;">
+      Top Commenters:
+      <%= render 'users/top_commenters', users: @top_commenters %>
+    </div>
 
-<%= will_paginate %>
+    <div style="float: left;">
+      Most Dashing:
+      <%= render 'users/top_rated', users: @most_dashing %>
+    </div>
+
+    <div style="float: left;">
+      Most Thanked:
+      <%= render 'users/top_thanked', users: @most_thanked %>
+    </div>
+
+    <div style="float: left;">
+      Most Favorited:
+      <%= render 'users/top_favorited', users: @most_favorited %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+

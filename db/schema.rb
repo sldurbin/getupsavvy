@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124155611) do
+ActiveRecord::Schema.define(:version => 20121125145726) do
 
   create_table "comment_ratings", :force => true do |t|
     t.integer  "rater_id"
@@ -71,20 +71,40 @@ ActiveRecord::Schema.define(:version => 20121124155611) do
   add_index "picture_ratings", ["user_id", "picpost_id"], :name => "index_picture_ratings_on_user_id_and_picpost_id", :unique => true
   add_index "picture_ratings", ["user_id"], :name => "index_picture_ratings_on_user_id"
 
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "email",                      :default => "", :null => false
+    t.string   "encrypted_password",         :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",              :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "picposts_count",             :default => 0
+    t.integer  "picture_comments_count",     :default => 0
+    t.integer  "good_picture_ratings_count", :default => 0
+    t.integer  "bad_picture_ratings_count",  :default => 0
+    t.integer  "good_comment_ratings_count", :default => 0
+    t.integer  "bad_comment_ratings_count",  :default => 0
+    t.integer  "favorites_count",            :default => 0
+    t.integer  "favorited_count",            :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

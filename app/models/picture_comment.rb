@@ -1,7 +1,7 @@
 class PictureComment < ActiveRecord::Base
   attr_accessible :comment, :picpost_id
 
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   belongs_to :picpost
   has_one :comment_rating, dependent: :destroy
   
