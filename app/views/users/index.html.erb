@@ -1,33 +1,8 @@
-  <div style="text-align: center;">
-    <% provide(:title, 'Users') %>
-    <h3>Top Fashionistas</h3>
-  </div>
-
-  <div class="row" style="margin-top: 20px;">
-    <div style="float: left;">
-      Top Posters:
-      <%= render 'users/top_posters', users: @top_posters %>
-    </div>
-
-    <div style="float: left;">
-      Top Commenters:
-      <%= render 'users/top_commenters', users: @top_commenters %>
-    </div>
-
-    <div style="float: left;">
-      Most Dashing:
-      <%= render 'users/top_rated', users: @most_dashing %>
-    </div>
-
-    <div style="float: left;">
-      Most Thanked:
-      <%= render 'users/top_thanked', users: @most_thanked %>
-    </div>
-
-    <div style="float: left;">
-      Most Favorited:
-      <%= render 'users/top_favorited', users: @most_favorited %>
-    </div>
-    <div class="clearfix"></div>
-  </div>
-
+<% provide(:title, 'Users') %>
+<div style="text-align: center;">
+  <h3>Top Fashionistas</h3>
+</div>
+  
+<div>
+  <%= render 'users/top_users' %>
+</div>

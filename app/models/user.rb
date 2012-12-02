@@ -92,10 +92,11 @@ class User < ActiveRecord::Base
 
     unless user
       password = Devise.friendly_token[0,20]
+      email = "#{auth.uid}@twitter.com"
       user = User.create(name:auth.extra.raw_info.name,
                            provider:auth.provider,
                            uid:auth.uid,
-                           email:auth.info.email,
+                           email: email,
                            password:password,
                            password_confirmation:password
                            )
@@ -118,6 +119,20 @@ class User < ActiveRecord::Base
                            )
     end
     user
+  end
+
+  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
+      data = access_token.info
+      user = User.where(:email => data["email"]).first
+      password = Devise.friendly_token[0,20]
+      unless user
+          user = User.create(name: data["name"],
+    	    		   email: data["email"],
+  	    		   password: password,
+                           password_confirmation:password
+  	    		  )
+      end
+      user
   end
 
   def self.new_with_session(params, session)

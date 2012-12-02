@@ -513,3 +513,14 @@ div#stat_container table {
   }
 }
 
+table#top_users tr td {
+  padding: 10px 0px 10px 10px;
+  background-color: #ffffff;
+  width: 20%;
+}
+
+table#top_users {
+  margin: auto;
+  margin-top: 20px;
+  width: 100%;
+}

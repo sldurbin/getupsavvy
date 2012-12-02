@@ -15,7 +15,9 @@ class PicpostsController < ApplicationController
     if @picpost.save
       redirect_to @picpost
     else
-      render 'new'
+      flash[:error] = @picpost.errors.full_messages.to_sentence
+      redirect_back_or root_path
+      # TODO: Redirect to previous path
     end
   end
 

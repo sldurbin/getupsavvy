@@ -1,0 +1,29 @@
+<table id="top_users">
+  <tr>
+    <td class="coolshadow">
+      Top Posters:
+      <%= render 'users/top_posters', users: @top_posters %>
+    </td>
+
+    <td class="coolshadow">
+      Top Commenters:
+      <%= render 'users/top_commenters', users: @top_commenters %>
+    </td>
+
+    <td class="coolshadow">
+      Most Dashing:
+      <%= render 'users/top_rated', users: @most_dashing %>
+    </td>
+
+    <td class="coolshadow">
+      Most Thanked:
+      <%= render 'users/top_thanked', users: @most_thanked %>
+    </td>
+
+    <td class="coolshadow">
+      Most Favorited:
+      <%= render 'users/top_favorited', users: @most_favorited %>
+    </td>
+  </tr>
+</table>
+

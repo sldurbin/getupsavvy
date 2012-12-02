@@ -215,7 +215,10 @@ Devise.setup do |config|
   config.omniauth :facebook, "526942967315807", "516f1227a42d0c386ea67bf0522892e8"
 
   require "omniauth-twitter"
-  config.omniauth :twitter, "hEOTo0RO3DNjLs15MRlwQ", "agJoI8tToT2NSZTzO7TNWvMerzs5aa6bd8Vx81tBLY" 
+  config.omniauth :twitter, "hEOTo0RO3DNjLs15MRlwQ", "agJoI8tToT2NSZTzO7TNWvMerzs5aa6bd8Vx81tBLY"
+
+  require "omniauth-google-oauth2"
+  config.omniauth :google_oauth2, "224364396889.apps.googleusercontent.com", "_MYGLGfo0Sbulm9r3A2_9kbH", { access_type: "offline", approval_prompt: "false" }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
