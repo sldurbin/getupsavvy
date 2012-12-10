@@ -17,6 +17,11 @@
             <div id=<%= "rating_#{picpost.id}" %> class="rating_panel">
                 <%= render 'static_pages/rating_form', picpost: picpost %>
             </div>
+
+            <!--- <div style="width: 100%; background-color: #ebf2fa;"> -->
+            <div style="width: 100%; background-color: #eeeeee;">
+              <%= render 'shared/view_tags', picpost: picpost %>
+            </div>
           </div>
   <% end %>
 </div>

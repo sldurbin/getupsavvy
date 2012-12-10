@@ -7,7 +7,8 @@ html {
 
 body {
   //background-color: rgb(248,246,210);
-  background-color: #EDE8E4;
+  //background-color: #EDE8E4;
+  background-color: #f0f0f0;
   padding-top: 60px;
 }
 
@@ -198,7 +199,7 @@ input, textarea, select, .uneditable-input {
 div.pic {
   //border: 1px solid #F5CED0;
   position: relative;
-  padding: 5px;
+  padding-top: 5px;
   background-color: #ffffff;
   overflow: auto;
   font-size: x-small;
@@ -208,7 +209,7 @@ div.pic {
 }
 
 .picture_content {
-  margin-left: 20px;
+  margin-left: 18px;
 }
 
 .picture_row {
@@ -271,7 +272,7 @@ span.undo_icon_container {
   margin-left: 20px;
   padding-top: 5px;
   //border-top: 1px solid #F5CED0;
-  border-top: 1px solid #ACD3FC;
+  //border-top: 1px solid #ACD3FC;
   &:hover {
     cursor: pointer;
     text-decoration: underline;
@@ -465,6 +466,14 @@ div.post_comment_container {
   background: -o-linear-gradient(top, rgb(224, 224, 224), rgb(170, 170, 170));
 }
 
+.dark_gradient {
+  background: -moz-linear-gradient(center top, #4d4d4d, #101010) repeat scroll 0% 0% transparent;
+  background: -webkit-linear-gradient(#4d4d4d, #101010);
+  background: -ms-linear-gradient(top, #4d4d4d, #101010);
+  background: -o-linear-gradient(top, #4d4d4d, #101010);
+}
+
+
 button.exit_button {
   right: 10px; 
   top: 15px; 
@@ -523,4 +532,55 @@ table#top_users {
   margin: auto;
   margin-top: 20px;
   width: 100%;
+}
+
+ul#mytags {
+  margin-left: 0;
+  input { @include box-shadow(none); }
+}
+
+span.tag_names {
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+div.social_login_container div {
+  padding-bottom: 10px;
+}
+
+div.content_wrapper {
+  //background-color: #f0f0f0;
+  //padding: 10px 40px 0px 40px;
+  //margin-top: -20px;
+}
+
+ul.savnav {
+  position: relative;
+  left: 0;
+  display: block;
+  margin: 15px 10px 0 0;
+  list-style: none;
+  padding: 0;
+}
+
+ul.savnav > li {
+  display: block;
+  float: left;
+  line-height: 18px;
+  height: 100%;
+  a {  
+    float: none;
+    padding: 18px 11px 18px 11px;
+    color: #999999;
+    line-height: 19px;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+    &:hover {
+      cursor: pointer;
+      background-color: #4a4a4a; 
+      //color: #ffffff;
+    }
+  }
 }

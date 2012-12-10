@@ -12,6 +12,11 @@ class PicpostsController < ApplicationController
 
   def create
     @picpost = current_user.picposts.build(params[:picpost])
+    tags = params[:tags]
+    tags.each do |tag|
+      t = Tag.find_or_create_by_name(tag)
+      @picpost.tags << t
+    end
     if @picpost.save
       redirect_to @picpost
     else

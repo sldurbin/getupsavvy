@@ -16,6 +16,17 @@
     <%= f.label :caption %>
     <%= f.text_area :caption, rows: '3' %>
 
+    <%#= f.label :tags %>
+    <%#= f.text_field :tags, value: '' %>
+
+    <p>Tags (ex: banana-republic, macys, lacoste)</p>
+    <ul id="mytags">
+      <li>Tag1</li>
+      <li>Tag2</li>
+    </ul>
+
+
     <%= f.submit "Upload", class: "button-link" %>
   <% end %>
+
 </div>

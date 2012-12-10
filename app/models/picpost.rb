@@ -8,6 +8,8 @@ class Picpost < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
   has_many :favored, through: :favorites, source: :user
 
+  has_and_belongs_to_many :tags
+
   validates :user_id, presence: true
   validates :caption, length: { maximum: 100 }
  

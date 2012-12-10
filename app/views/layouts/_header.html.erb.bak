@@ -1,9 +1,9 @@
-<header class="navbar" style="position: fixed; top: 0; right: 0; left: 0; z-index: 1030; margin-bottom: 0;">
-  <div class="dark_gradient" style="height: 50px;">
-    <div class="" style="width: 940px; margin-left: auto; margin-right: auto; overflow: visible;">
-      <%= link_to image_tag("logo4.png", alt: "GetupSavvy"), root_path, id: "logo" %>
+<header class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to image_tag("logo4.png", alt: "Clashing or Dashing"), root_path, id: "logo" %>
       <nav>
-        <ul class="nav" style="float: right;">
+        <ul class="nav pull-right">
           <li>
             <%= link_to new_picpost_path, remote: true  do %>
               Add New
@@ -14,9 +14,9 @@
           <li><%= link_to "Help", help_path %></li>
           <% if user_signed_in? %>
             <li><%#= link_to "Users", users_path %></li>
-            <li id="" class="dropdown" style="position: relative;">
+            <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= current_user.name %><b class="caret" style="margin-top: 8px; margin-left: 2px; border-top-color: white; border-bottom-color: white; margin-right: 11px;"></b>
+                <%= current_user.name %><b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Posts", user_path(current_user, frame: 'picposts') %></li>

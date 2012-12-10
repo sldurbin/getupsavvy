@@ -28,6 +28,7 @@ Matcher::Application.routes.draw do
   #match '/signin', to: 'sessions#new'
   #match '/signout', to: 'sessions#destroy', via: :delete
 
+  match '/welcome', to: 'static_pages#splash'
   match '/about', to: 'static_pages#about'
   match '/help', to: 'static_pages#help'
   match '/contact', to: 'static_pages#contact'

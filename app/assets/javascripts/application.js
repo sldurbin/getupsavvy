@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap
 //= require jquery_masonry_min
+//= require tag-it.min
 
 function setup_masonry(num_cols) {
   var $picpostContainer = $("#picpost_container");
@@ -58,4 +60,5 @@ $(document).ready(function() {
     alert("X: " + e.pageX + " Y: " + e.pageY);
   });*/
   setup_favorites_button();
+
 });
