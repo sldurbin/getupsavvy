@@ -20,7 +20,9 @@
 
     <%= render 'layouts/header' %>
 
-    <div class="container content_wrapper">
+    <%#= render 'layouts/social' %>
+
+    <div class="container content_wrapper" style="margin-top: 15px;">
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
       <% end %>
